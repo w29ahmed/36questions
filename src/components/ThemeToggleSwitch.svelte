@@ -1,21 +1,21 @@
-<script>
+<script lang="ts">
   import Fa from "svelte-fa";
   import { faMoon } from "@fortawesome/free-solid-svg-icons";
   import { faSun } from "@fortawesome/free-solid-svg-icons";
   import Switch from "svelte-switch";
 
-  let checkedValue = true;
+  export let isDarkTheme: boolean;
 
-  function handleChange(e) {
-    const { checked } = e.detail;
-    checkedValue = checked;
+  function toggleTheme() {
+    isDarkTheme = !isDarkTheme;
+    console.log("toggleTheme " + isDarkTheme);
   }
 </script>
 
 <div class="absolute top-0 right-0 p-4">
   <Switch
-    on:change={handleChange}
-    checked={checkedValue}
+    on:change={toggleTheme}
+    checked={isDarkTheme}
     onColor="#814ad8"
     offColor="#475569"
   >
