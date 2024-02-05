@@ -1,6 +1,7 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import ThemeToggleSwitch from "./components/ThemeToggleSwitch.svelte";
+  import QuestionText from "./components/QuestionText.svelte";
   import "./app.css";
 
   // Directly initialize isDarkTheme based on localStorage or default to light theme
@@ -21,4 +22,5 @@
 
 <body class="bg-red-300 dark:bg-gray-900 min-h-screen">
   <ThemeToggleSwitch bind:isDarkTheme />
+  <QuestionText />
 </body>
