@@ -1,7 +1,6 @@
 <script lang="ts">
   import Fa from "svelte-fa";
-  import { faMoon } from "@fortawesome/free-solid-svg-icons";
-  import { faSun } from "@fortawesome/free-solid-svg-icons";
+  import { faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
   import Switch from "svelte-switch";
 
   export let isDarkTheme: boolean;
