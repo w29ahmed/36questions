@@ -9,7 +9,6 @@
 
   // Reactive statement to handle theme changes
   $: {
-    console.log("App.Svelte " + isDarkTheme);
     localStorage.setItem("theme", isDarkTheme ? "dark" : "light");
     document.documentElement.classList.toggle("dark", isDarkTheme);
   }

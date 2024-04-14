@@ -8,7 +8,6 @@
 
   function toggleTheme() {
     isDarkTheme = !isDarkTheme;
-    console.log("toggleTheme " + isDarkTheme);
   }
 </script>
 
