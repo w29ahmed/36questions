@@ -1,16 +1,28 @@
 <script lang="ts">
+  import { writable } from "svelte/store";
   import Fa from "svelte-fa";
   import { faAngleRight, faAngleLeft } from "@fortawesome/free-solid-svg-icons";
 
-  export let question =
+  // Get questionNumber from local storage, initial starting value is 1
+  export const questionNumber = writable(parseInt(localStorage.getItem("questionNumber")) || 1);
+
+  let question =
     "If you could invite anyone in the world to dinner, who would it be?";
 
   function handleLeftClick() {
-    console.log("Left arrow clicked");
+    questionNumber.update(n => {
+      let newCount = Math.max(n - 1, 1);
+      localStorage.setItem("questionNumber", newCount.toString());
+      return newCount;
+    });
   }
 
   function handleRightClick() {
-    console.log("Right arrow clicked");
+    questionNumber.update(n => {
+      let newCount = Math.min(n + 1, 36);
+      localStorage.setItem("questionNumber", newCount.toString());
+      return newCount;
+    });
   }
 </script>
 
@@ -30,7 +42,3 @@
     <Fa icon={faAngleRight} class="text-5xl text-gray-900 dark:text-gray-200" />
   </div>
 </div>
-
-
-<style>
-</style>
