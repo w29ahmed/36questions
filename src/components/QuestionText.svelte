@@ -1,13 +1,14 @@
 <script lang="ts">
+  import { onMount } from "svelte";
   import { writable } from "svelte/store";
   import Fa from "svelte-fa";
   import { faAngleRight, faAngleLeft } from "@fortawesome/free-solid-svg-icons";
+  import questions from "../assets/questions.json";
 
   // Get questionNumber from local storage, initial starting value is 1
   export const questionNumber = writable(parseInt(localStorage.getItem("questionNumber")) || 1);
 
-  let question =
-    "If you could invite anyone in the world to dinner, who would it be?";
+  let question = "";
 
   function handleLeftClick() {
     questionNumber.update(n => {
@@ -24,6 +25,9 @@
       return newCount;
     });
   }
+
+  // Reactively update the question based on the current question number
+  $: question = questions[$questionNumber - 1];
 </script>
 
 <div class="flex items-center justify-between w-full h-screen px-5">
