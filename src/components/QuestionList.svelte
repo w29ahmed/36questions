@@ -40,19 +40,15 @@
   .question-list::-webkit-scrollbar {
     display: none; /* Safari and Chrome: Hide scrollbar */
   }
-  .current {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #ff0000; /* Highlight color */
-    transform: scale(1.2);
-  }
 </style>
 
 <div id="question-list" class="question-list px-12 py-2">
   {#each questions as question}
     <h1
       id={`question-${question}`}
-      class="font-sans text-xl text-gray-900 dark:text-gray-200 text-center p-5 transition transform {currentQuestion === question ? "current" : ""}"
+      class="font-sans text-xl text-gray-900 dark:text-gray-200 text-center p-5
+       transition-transform duration-300 ease-in-out cursor-pointer
+       {currentQuestion === question ? "text-2xl font-bold scale-150" : ""}"
       on:click={() => questionNumber.set(question)}
     >
       {question}
