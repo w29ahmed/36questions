@@ -35,10 +35,10 @@
     display: flex;
     overflow-x: auto;
     white-space: nowrap;
-    scrollbar-width: none; /* Firefox */
+    scrollbar-width: none; /* Firefox: Hide scrollbar */
   }
   .question-list::-webkit-scrollbar {
-    display: none; /* Safari and Chrome */
+    display: none; /* Safari and Chrome: Hide scrollbar */
   }
   .current {
     font-size: 1.5rem;
@@ -50,8 +50,6 @@
 
 <div id="question-list" class="question-list px-12 py-2">
   {#each questions as question}
-    <div
-    >
     <h1
       id={`question-${question}`}
       class="font-sans text-xl text-gray-900 dark:text-gray-200 text-center p-5 transition transform {currentQuestion === question ? "current" : ""}"
@@ -59,6 +57,5 @@
     >
       {question}
     </h1>
-    </div>
   {/each}
 </div>
