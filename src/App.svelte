@@ -2,6 +2,7 @@
   import { onMount } from "svelte";
   import ThemeToggleSwitch from "./components/ThemeToggleSwitch.svelte";
   import QuestionText from "./components/QuestionText.svelte";
+  import QuestionList from "./components/QuestionList.svelte";
   import "./app.css";
 
   // Directly initialize isDarkTheme based on localStorage or default to light theme
@@ -19,7 +20,10 @@
   });
 </script>
 
-<body class="bg-red-300 dark:bg-gray-900 min-h-screen">
+<body class="bg-red-300 dark:bg-gray-900 min-h-screen flex flex-col">
   <ThemeToggleSwitch bind:isDarkTheme />
-  <QuestionText />
+  <div class="flex-grow flex flex-col justify-center">
+    <QuestionText />
+  </div>
+  <QuestionList />
 </body>

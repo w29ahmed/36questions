@@ -3,34 +3,24 @@
   import { writable } from "svelte/store";
   import Fa from "svelte-fa";
   import { faAngleRight, faAngleLeft } from "@fortawesome/free-solid-svg-icons";
+  import { questionNumber } from "../stores/questionNumberStore";
   import questions from "../assets/questions.json";
-
-  // Get questionNumber from local storage, initial starting value is 1
-  export const questionNumber = writable(parseInt(localStorage.getItem("questionNumber")) || 1);
 
   let question = "";
 
   function handleLeftClick() {
-    questionNumber.update(n => {
-      let newCount = Math.max(n - 1, 1);
-      localStorage.setItem("questionNumber", newCount.toString());
-      return newCount;
-    });
+    questionNumber.update(n => Math.max(n - 1, 1));
   }
 
   function handleRightClick() {
-    questionNumber.update(n => {
-      let newCount = Math.min(n + 1, 36);
-      localStorage.setItem("questionNumber", newCount.toString());
-      return newCount;
-    });
+    questionNumber.update(n => Math.min(n + 1, 36));
   }
 
   // Reactively update the question based on the current question number
   $: question = questions[$questionNumber - 1];
 </script>
 
-<div class="flex items-center justify-between w-full h-screen px-5">
+<div class="flex items-center justify-between w-full px-5">
   <!-- Left arrow -->
   <div on:click={handleLeftClick} class="cursor-pointer hover:opacity-50">
     <Fa icon={faAngleLeft} class="text-5xl text-gray-900 dark:text-gray-200 hover:opacity-50" />
