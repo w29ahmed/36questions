@@ -65,7 +65,7 @@
           id={`question-${question}`}
           class="font-sans text-xl text-gray-900 dark:text-gray-200 text-center p-5
             transition-transform duration-300 ease-in-out cursor-pointer
-            {currentQuestion === question ? "text-2xl font-bold scale-150" : "opacity-50 hover:opacity-100"}"
+            {currentQuestion === question ? "text-2xl font-bold scale-150" : "opacity-50 hover:opacity-100 hover:scale-125"}"
           on:click={() => questionNumber.set(question)}
         >
           {question}

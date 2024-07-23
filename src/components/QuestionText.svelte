@@ -22,8 +22,8 @@
 
 <div class="flex items-center justify-between w-full px-5">
   <!-- Left arrow -->
-  <div on:click={handleLeftClick} class="cursor-pointer hover:opacity-50">
-    <Fa icon={faAngleLeft} class="text-5xl text-gray-900 dark:text-gray-200 hover:opacity-50" />
+  <div on:click={handleLeftClick} class="cursor-pointer hover:opacity-50 hover:scale-125">
+    <Fa icon={faAngleLeft} class="text-5xl text-gray-900 dark:text-gray-200" />
   </div>
 
   <!-- Question Text -->
@@ -32,7 +32,7 @@
   </h1>
 
   <!-- Right arrow -->
-  <div on:click={handleRightClick} class="cursor-pointer hover:opacity-50">
+  <div on:click={handleRightClick} class="cursor-pointer hover:opacity-50 hover:scale-125">
     <Fa icon={faAngleRight} class="text-5xl text-gray-900 dark:text-gray-200" />
   </div>
 </div>
