@@ -2,10 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* .theme-transition {
-  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
-} */
-
 /* Global transitions for theme change */
 :root {
   --transition-duration: 250ms;
@@ -13,4 +9,13 @@
 
 * {
   transition: background-color var(--transition-duration), color var(--transition-duration), border-color var(--transition-duration);
+}
+
+/* Font Awesome icons use svg under the hood and don't
+   seem to play nicely with the transition timings.
+*/
+svg,
+path,
+g {
+  transition: none;
 }
