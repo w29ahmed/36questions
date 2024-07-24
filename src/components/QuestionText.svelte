@@ -5,6 +5,7 @@
   import { faAngleRight, faAngleLeft } from "@fortawesome/free-solid-svg-icons";
   import { questionNumber } from "../stores/questionNumberStore";
   import questions from "../assets/questions.json";
+  import Hammer from "hammerjs";
 
   let question = "";
 
@@ -15,6 +16,23 @@
   function handleRightClick() {
     questionNumber.update(n => Math.min(n + 1, 36));
   }
+
+  // Set up Hammer.js for swipe detection
+  onMount(() => {
+    // Create a Hammer instance attached to the document body
+    const hammer = new Hammer(document.body);
+
+    // Add event listeners for swipe left and swipe right
+    hammer.on("swipeleft", handleRightClick);
+    hammer.on("swiperight", handleLeftClick);
+
+    // Return a cleanup function to remove the event listeners
+    // when the component is destroyed
+    return () => {
+      hammer.off("swipeleft", handleRightClick);
+      hammer.off("swiperight", handleLeftClick);
+    };
+  });
 
   // Reactively update the question based on the current question number
   $: question = questions[$questionNumber - 1];
