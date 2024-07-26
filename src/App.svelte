@@ -21,9 +21,8 @@
 </script>
 
 <body class="bg-red-300 dark:bg-gray-900 min-h-screen flex flex-col">
-  <ThemeToggleSwitch bind:isDarkTheme />
-  <div class="flex-grow flex flex-col justify-center">
-    <QuestionText />
-  </div>
+  <QuestionText />
   <QuestionList />
+  <!-- Top right corner, putting it here so its on top of DOM -->
+  <ThemeToggleSwitch bind:isDarkTheme />
 </body>

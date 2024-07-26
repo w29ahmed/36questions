@@ -58,14 +58,14 @@
 </style>
 
 <div class="fixed bottom-0 w-full">
-  <div class="outer-wrapper px-12">
+  <div class="outer-wrapper px-6 md:px-12">
     <div class="inner-wrapper" id="question-list">
       {#each questions as question}
         <h1
           id={`question-${question}`}
-          class="font-sans text-xl text-gray-900 dark:text-gray-200 text-center p-5
+          class="font-sans text-lg md:text-2xl text-gray-900 dark:text-gray-200 text-center p-5
             transition-transform duration-300 ease-in-out cursor-pointer
-            {currentQuestion === question ? "text-2xl font-bold scale-150" : "opacity-50 hover:opacity-100 hover:scale-125"}"
+            {currentQuestion === question ? "text-xl md:text-3xl font-bold scale-150" : "opacity-50 hover:opacity-100 hover:scale-125"}"
           on:click={() => questionNumber.set(question)}
         >
           {question}
