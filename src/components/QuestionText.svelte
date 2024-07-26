@@ -1,6 +1,7 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import { writable } from "svelte/store";
+  import { fly } from "svelte/transition";
   import Fa from "svelte-fa";
   import { faAngleRight, faAngleLeft } from "@fortawesome/free-solid-svg-icons";
   import { questionNumber } from "../stores/questionNumberStore";
@@ -45,9 +46,17 @@
   </div>
 
   <!-- Question Text -->
-  <h1 class="font-sans text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-200 text-center mx-8 md:mx-16">
-    {question}
-  </h1>
+  <div class="relative flex justify-center items-center w-full h-64 overflow-hidden">
+      {#key $questionNumber}
+      <h1
+        in:fly={{ x: -250, duration: 350 }}
+        out:fly={{ x: 250, duration: 350 }}
+        class="font-sans text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-200 text-center mx-8 md:mx-16 absolute"
+      >
+        {question}
+      </h1>
+    {/key}
+  </div>
 
   <!-- Right arrow -->
   <div on:click={handleRightClick} class="cursor-pointer hover:opacity-50 hover:scale-125">
