@@ -8,7 +8,9 @@
   import questions from "../assets/questions.json";
   import Hammer from "hammerjs";
 
-  let question = "";
+  let questionText = "";
+  let transitionDirection = "";
+  let previousQuestionNumber = questionNumber;
 
   function handleLeftClick() {
     questionNumber.update(n => Math.max(n - 1, 1));
@@ -35,8 +37,18 @@
     };
   });
 
-  // Reactively update the question based on the current question number
-  $: question = questions[$questionNumber - 1];
+  // Reactively update the question and transition direction based on the current question number
+  $: {
+    if ($questionNumber > previousQuestionNumber) {
+      transitionDirection = "right";
+    } else if ($questionNumber < previousQuestionNumber) {
+      transitionDirection = "left";
+    }
+    previousQuestionNumber = $questionNumber;
+
+    // Reactively update the question text based on the current question number
+    questionText = questions[$questionNumber - 1];
+  }
 </script>
 
 <div class="flex items-center justify-between w-full px-5">
@@ -46,14 +58,14 @@
   </div>
 
   <!-- Question Text -->
-  <div class="relative flex justify-center items-center w-full h-64 overflow-hidden">
-      {#key $questionNumber}
+  <div class="relative flex justify-center items-center w-full h-screen overflow-hidden">
+    {#key $questionNumber}
       <h1
-        in:fly={{ x: -250, duration: 350 }}
-        out:fly={{ x: 250, duration: 350 }}
+        in:fly={{ x: transitionDirection == "right" ? -250 : 250, duration: 500 }}
+        out:fly={{ x: transitionDirection == "right" ? 250 : -250, duration: 500 }}
         class="font-sans text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-200 text-center mx-8 md:mx-16 absolute"
       >
-        {question}
+        {questionText}
       </h1>
     {/key}
   </div>
