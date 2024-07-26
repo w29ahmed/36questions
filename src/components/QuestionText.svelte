@@ -40,9 +40,9 @@
   // Reactively update the question and transition direction based on the current question number
   $: {
     if ($questionNumber > previousQuestionNumber) {
-      transitionDirection = "right";
-    } else if ($questionNumber < previousQuestionNumber) {
       transitionDirection = "left";
+    } else if ($questionNumber < previousQuestionNumber) {
+      transitionDirection = "right";
     }
     previousQuestionNumber = $questionNumber;
 
