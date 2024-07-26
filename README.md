@@ -1,4 +1,4 @@
-# 36Questions
+# 36questions
 
 ### Built with
 
