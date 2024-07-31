@@ -5,7 +5,7 @@
   let questions = Array.from({ length: 36 }, (_, i) => i + 1);
   let currentQuestion: number;
 
-  questionNumber.subscribe(value => {
+  questionNumber.subscribe((value) => {
     currentQuestion = value;
   });
 
@@ -14,9 +14,10 @@
     const list = document.getElementById("question-list");
     const item = document.getElementById(`question-${currentQuestion}`);
     if (list && item) {
-      const outerWrapper = document.querySelector('.outer-wrapper');
+      const outerWrapper = document.querySelector(".outer-wrapper");
       const padding = parseFloat(getComputedStyle(outerWrapper).paddingLeft);
-      list.scrollLeft = item.offsetLeft - list.offsetWidth / 2 + item.offsetWidth / 2 - padding;
+      list.scrollLeft =
+        item.offsetLeft - list.offsetWidth / 2 + item.offsetWidth / 2 - padding;
     }
   }
 
@@ -31,6 +32,26 @@
     window.removeEventListener("resize", scrollToCurrent);
   });
 </script>
+
+<div class="fixed bottom-0 w-full">
+  <div class="outer-wrapper px-6 md:px-12">
+    <div class="inner-wrapper" id="question-list">
+      {#each questions as question}
+        <h1
+          id={`question-${question}`}
+          class="font-sans text-lg md:text-2xl text-gray-900 dark:text-gray-200 text-center p-5
+            transition-transform duration-300 ease-in-out cursor-pointer
+            {currentQuestion === question
+            ? 'text-xl md:text-3xl font-bold scale-150'
+            : 'opacity-50 hover:opacity-100 hover:scale-125'}"
+          on:click={() => questionNumber.set(question)}
+        >
+          {question}
+        </h1>
+      {/each}
+    </div>
+  </div>
+</div>
 
 <style>
   .outer-wrapper {
@@ -56,21 +77,3 @@
     flex-shrink: 0;
   }
 </style>
-
-<div class="fixed bottom-0 w-full">
-  <div class="outer-wrapper px-6 md:px-12">
-    <div class="inner-wrapper" id="question-list">
-      {#each questions as question}
-        <h1
-          id={`question-${question}`}
-          class="font-sans text-lg md:text-2xl text-gray-900 dark:text-gray-200 text-center p-5
-            transition-transform duration-300 ease-in-out cursor-pointer
-            {currentQuestion === question ? "text-xl md:text-3xl font-bold scale-150" : "opacity-50 hover:opacity-100 hover:scale-125"}"
-          on:click={() => questionNumber.set(question)}
-        >
-          {question}
-        </h1>
-      {/each}
-    </div>
-  </div>
-</div>

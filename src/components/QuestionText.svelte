@@ -13,11 +13,11 @@
   let previousQuestionNumber = questionNumber;
 
   function handleLeftClick() {
-    questionNumber.update(n => Math.max(n - 1, 1));
+    questionNumber.update((n) => Math.max(n - 1, 1));
   }
 
   function handleRightClick() {
-    questionNumber.update(n => Math.min(n + 1, 36));
+    questionNumber.update((n) => Math.min(n + 1, 36));
   }
 
   // Set up Hammer.js for swipe detection
@@ -53,16 +53,30 @@
 
 <div class="flex items-center justify-between w-full px-5">
   <!-- Left arrow -->
-  <div on:click={handleLeftClick} class="cursor-pointer hover:opacity-50 hover:scale-125">
-    <Fa icon={faAngleLeft} class="text-4xl md:text-6xl text-gray-900 dark:text-gray-200" />
+  <div
+    on:click={handleLeftClick}
+    class="cursor-pointer hover:opacity-50 hover:scale-125"
+  >
+    <Fa
+      icon={faAngleLeft}
+      class="text-4xl md:text-6xl text-gray-900 dark:text-gray-200"
+    />
   </div>
 
   <!-- Question Text -->
-  <div class="relative flex justify-center items-center w-full h-screen overflow-hidden">
+  <div
+    class="relative flex justify-center items-center w-full h-screen overflow-hidden"
+  >
     {#key $questionNumber}
       <h1
-        in:fly={{ x: transitionDirection == "right" ? -250 : 250, duration: 500 }}
-        out:fly={{ x: transitionDirection == "right" ? 250 : -250, duration: 500 }}
+        in:fly={{
+          x: transitionDirection == "right" ? -250 : 250,
+          duration: 500,
+        }}
+        out:fly={{
+          x: transitionDirection == "right" ? 250 : -250,
+          duration: 500,
+        }}
         class="font-sans text-xl md:text-4xl font-bold text-gray-900 dark:text-gray-200 text-center mx-8 md:mx-32 absolute"
       >
         {questionText}
@@ -71,7 +85,13 @@
   </div>
 
   <!-- Right arrow -->
-  <div on:click={handleRightClick} class="cursor-pointer hover:opacity-50 hover:scale-125">
-    <Fa icon={faAngleRight} class="text-4xl md:text-6xl text-gray-900 dark:text-gray-200" />
+  <div
+    on:click={handleRightClick}
+    class="cursor-pointer hover:opacity-50 hover:scale-125"
+  >
+    <Fa
+      icon={faAngleRight}
+      class="text-4xl md:text-6xl text-gray-900 dark:text-gray-200"
+    />
   </div>
 </div>
