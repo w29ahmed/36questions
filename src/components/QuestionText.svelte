@@ -17,7 +17,7 @@
   }
 
   function handleRightClick() {
-    questionNumber.update((n) => Math.min(n + 1, 36));
+    questionNumber.update((n) => Math.min(n + 1, 37));
   }
 
   // Set up Hammer.js for swipe detection

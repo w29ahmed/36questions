@@ -2,7 +2,7 @@
   import { questionNumber } from "../stores/questionNumberStore";
   import { onMount, afterUpdate, onDestroy } from "svelte";
 
-  let questions = Array.from({ length: 36 }, (_, i) => i + 1);
+  let questions = Array.from({ length: 37 }, (_, i) => i + 1);
   let currentQuestion: number;
 
   questionNumber.subscribe((value) => {
@@ -46,7 +46,7 @@
             : 'opacity-50 hover:opacity-100 hover:scale-125'}"
           on:click={() => questionNumber.set(question)}
         >
-          {question}
+          {question === 37 ? "?" : question}
         </h1>
       {/each}
     </div>
