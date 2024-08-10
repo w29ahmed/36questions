@@ -40,13 +40,3 @@
   <!-- Top right corner, putting it here so its on top of DOM -->
   <ThemeToggleSwitch bind:isDarkTheme />
 </body>
-
-<style>
-  body {
-    /* Extend background color to safe area */
-    padding-top: env(safe-area-inset-top);
-    padding-bottom: env(safe-area-inset-bottom);
-    padding-left: env(safe-area-inset-left);
-    padding-right: env(safe-area-inset-right);
-  }
-</style>
