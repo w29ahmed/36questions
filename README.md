@@ -1,6 +1,6 @@
 # 36questions
 
-Inspired by the New York Times article ["36 Questions That Lead to Love"](https://web.archive.org/web/20200812060110/https://www.nytimes.com/2015/01/09/style/no-37-big-wedding-or-small.html), this app guides you through thought-provoking questions to foster intimacy and understanding with a partner or a new acquaintance. Dive in and see where it takes you!
+Inspired by the New York Times article ["36 Questions That Lead to Love"](https://web.archive.org/web/20200812060110/https://www.nytimes.com/2015/01/09/style/no-37-big-wedding-or-small.html), this app guides you through thought-provoking questions to foster intimacy and understanding with a partner or a new acquaintance. Dive in and see where it takes you! Try it [here](https://w29ahmed.github.io/36questions).
 
 <div align="center">
   <img src="./assets/demo.gif" alt="demo">
